@@ -1,0 +1,97 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "HOT",
+      "description": "HOT Filter Khaini is one of Uchha Himal Product Pvt. Ltd.’s premium export-grade tobacco products, crafted exclusively for international markets. Designed with precision and care, it combines rich tobacco flavor with a modern, hygienic filter sachet system — delivering a refined and satisfying experience for mature users.",
+      "category": "khaini",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761402147/Products/vp52yjmlxwqvozjfbrwb.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Ratna Chhap",
+      "description": "Ratna Chhap Jarda Surti is one of Uchha Himal’s most renowned traditional tobacco products. Made from finely cured tobacco leaves, it offers a smooth texture, rich aroma, and deep flavor that appeals to seasoned Jarda users. Its purity and consistency have made Ratna Chhap a respected name among tobacco connoisseurs.",
+      "isFeatured": true,
+      "category": "surti",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401686/Products/pg3fof44lya9jcff3tlz.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Zafri",
+      "description": "Zafri Pan Masala is a flavorful, non-tobacco blend combining aromatic spices, sweet notes, and premium areca nut. Its fine balance of freshness and richness provides an enjoyable experience that refreshes the senses while maintaining the essence of traditional Pan Masala taste.",
+      "isFeatured": false,
+      "category": "pan-masala",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401644/Products/apeo2nhsx6jqzxqwq6kg.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Pan Bahar",
+      "description": "Pan Bahar is a classic, timeless Pan Masala that blends the best of areca nut, cardamom, and traditional flavors. Known for its signature aroma and long-lasting freshness, Pan Bahar delivers a delightful and sophisticated chew that symbolizes luxury and tradition in every bite.",
+      "isFeatured": true,
+      "category": "pan-masala",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401578/Products/t6vzs0sd9bi7dr1nlrsh.jpg"
+    },
+    {
+      "id": 5,
+      "name": "S.S. Parag",
+      "description": "S.S. Parag Pan Masala is a non-tobacco blend that captures the freshness of natural areca nut and aromatic spices. Its balanced flavor and pleasant fragrance make it a refreshing choice for those seeking a premium chewing experience without tobacco. Each pack offers a crisp, uplifting taste perfect for all occasions.",
+      "isFeatured": false,
+      "category": "pan-masala",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401500/Products/ng4aewpmlmvgyye4zdpk.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Sultan",
+      "description": "Sultan is a versatile blend that embodies strength and sophistication. Combining tobacco, lime, and spices in perfect proportion, it delivers a powerful, energizing flavor. Whether enjoyed as Gutkha, Khaini, or Surti, Sultan provides a distinctive experience — bold, aromatic, and deeply satisfying.",
+      "isFeatured": false,
+      "category": "gutkha",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401398/Products/s90afyymmwk0wtvcmr5y.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Hans",
+      "description": "Hans represents purity and excellence in tobacco craftsmanship. Its carefully selected ingredients create a harmonious blend of bold tobacco and aromatic spices, offering a rich yet smooth chewing experience. Available as both Gutkha and Surti, Hans is a symbol of Uchha Himal’s dedication to premium taste and quality.",
+      "isFeatured": true,
+      "category": "gutkha",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401289/Products/hcn4pa8vgcp1vsoxjack.jpg"
+    },
+    {
+      "id": 8,
+      "name": "2100",
+      "description": "2100 is a dual-purpose blend that caters to Gutkha and Surti enthusiasts alike. The product features fine-cut tobacco enriched with natural flavorings for a rich, satisfying chew. Known for its balanced strength and smooth texture, 2100 is designed to deliver lasting freshness and satisfaction in every use.",
+      "isFeatured": false,
+      "category": "surti",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401216/Products/xaashtk5h6flpk2sgebg.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Sir Gold",
+      "description": "Sir Gold Gutkha combines luxury and heritage in a single pouch. The blend of golden-grade tobacco and aromatic betel nut gives it a premium feel and refined taste. Enhanced with a mild spice mix, it offers a balanced chewing experience that’s both refreshing and invigorating — perfect for those who appreciate quality and sophistication.",
+      "isFeatured": true,
+      "category": "gutkha",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401132/Products/wwpjy7rdxnmmwitppnxi.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Afzal",
+      "description": "Afzal Surti is a pure Surti product crafted for those who value authenticity. Made using carefully hand-picked tobacco leaves, it delivers a rich, earthy flavor and smooth texture. Its traditional preparation method ensures an experience that is both strong and natural, making it a favorite among classic Surti users.",
+      "isFeatured": true,
+      "category": "surti",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401061/Products/d1440tuftjyyzuqhseqb.jpg"
+    },{
+        "id":11,
+        "name" :" SHIKAR",
+        "description":"Shikar Gutkha is known for its distinctive and intense flavor. Made from carefully selected tobacco and betel nut, it delivers a strong, energizing chew favored by experienced users. Every pouch of Shikar Gutkha encapsulates tradition, boldness, and excellence — a true reflection of Uchha Himal’s quality-driven manufacturing.",
+         "isFeatured": true,
+      "category": "gutkha",
+      "images":"https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1761400995%2FProducts%2Fcq6j9dncywyuuppxvdeu.jpg&w=750&q=75"
+    },  {
+      "id": 12,
+      "name": "S.S. Parag",
+      "description": "S.S. Parag Pan Masala is a non-tobacco blend that captures the freshness of natural areca nut and aromatic spices. Its balanced flavor and pleasant fragrance make it a refreshing choice for those seeking a premium chewing experience without tobacco. Each pack offers a crisp, uplifting taste perfect for all occasions.",
+      "isFeatured": false,
+      "category": "pan-masala",
+      "images": "https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1760615039%2FProducts%2Fuf1mliumvcsauxpurt92.jpg&w=750&q=75"
+    }
+  ]}
+  

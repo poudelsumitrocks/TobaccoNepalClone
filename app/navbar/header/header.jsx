@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const pathname = usePathname();
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -22,6 +24,20 @@ export default function Header() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+   const navClass = (path) =>
+    `text-md cursor-pointer  border-b-2 transition-all
+     ${
+       pathname === path
+         ? "border-[#eab308] text-[#eab308]"
+         : "border-transparent hover:text-[#eab308]"
+     }`;
+ const dropdownClass = (path) =>
+    `px-4 py-2 cursor-pointer rounded-md transition-all ${
+      pathname === path
+        ? "bg-[#eab308] text-black"
+        : "hover:bg-[#eab308] hover:text-black"
+    }`;
+      const isGalleryActive = pathname.startsWith("/gallery");
 
   return (
     <div className="h-22 w-screen bg-[#211f1b] flex items-center justify-between px-4">
@@ -41,53 +57,59 @@ export default function Header() {
       {/* Nav Items */}
       <div className="flex gap-6 justify-between text-white relative">
 
-        <Link href="/" className="border-b-2 border-[#eab308] hover:text-[#eab308] text-md">
+        <Link href="/" className={navClass("/")}>
           Home
         </Link>
 
-        <Link href="/product" className="hover:text-[#eab308] text-md">
+        
+        <Link href="/product" className={navClass("/product")}>
           Product
         </Link>
 
-        <Link href="/about" className="hover:text-[#eab308] text-md">
+        <Link href="/about" className={navClass("/about")}>
           About
         </Link>
 
-        <Link href="/blog" className="hover:text-[#eab308] text-md">
+        <Link href="/blog" className={navClass("/blog")}>
           Blog
         </Link>
 
         {/* Gallery Dropdown */}
-        <div ref={dropdownRef} className="relative">
-          <button
-            onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center gap-1 text-md hover:text-[#eab308]"
-          >
-            Gallery {showDropdown ? <FaAngleUp /> : <FaAngleDown />}
-          </button>
+         <div ref={dropdownRef} className="relative">
+        <button
+          onClick={() => setShowDropdown(!showDropdown)}
+          className={`flex items-center gap-1 text-md border-b-2 transition-all ${
+            isGalleryActive
+              ? "border-[#eab308] text-[#eab308]"
+              : "border-transparent hover:text-[#eab308]"
+          }`}
+        >
+          Gallery {showDropdown ? <FaAngleUp /> : <FaAngleDown />}
+        </button>
 
-          {showDropdown && (
-            <div className="absolute top-full left-0 mt-2 w-48 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/30 p-2 z-10 shadow-lg">
-              <ul className="flex flex-col p-2">
-                <Link
-                  href="/gallery/photo"
-                  className="px-4 py-2 cursor-pointer hover:bg-[#eab308] rounded-md"
-                >
-                  Photo Gallery
-                </Link>
+        {showDropdown && (
+          <div className="absolute top-full right-0 mt-2 w-48 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/30 p-2 z-10 shadow-lg">
+            <ul className="flex flex-col p-2">
+              <Link
+                href="./gallery/photo"
+                className={dropdownClass("./gallery/photo")}
+                onClick={() => setShowDropdown(false)}
+              >
+                Photo Gallery
+              </Link>
+              <Link
+                href="./gallery/vedio"
+                className={dropdownClass("/video")}
+                onClick={() => setShowDropdown(false)}
+              >
+                Video Gallery
+              </Link>
+            </ul>
+          </div>
+        )}
+      </div>
 
-                <Link
-                  href="/gallery/vedio"
-                  className="px-4 py-2 cursor-pointer hover:bg-[#eab308] rounded-md"
-                >
-                  Video Gallery
-                </Link>
-              </ul>
-            </div>
-          )}
-        </div>
-
-        <Link href="/contact" className="hover:text-[#eab308] text-md">
+        <Link href="/contact" className={navClass("/contact")}>
           Contact
         </Link>
       </div>

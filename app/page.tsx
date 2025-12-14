@@ -6,19 +6,19 @@ import FeaturedProduct from "./component/Featuredproduct/page"
 import Ourstory from "./component/Ourstory/page";
 import Gallery from "./component/Gallery/page";
 import Getintouch from "./component/Getintouch/page";
-import Ageristrict from "./Ageristrict/page";
+// import Ageristrict from "./Ageristrict/page";
 
-export default function Home() {
-  const [isVerified, setIsVerified] = useState(false);
+export default function Home({}) {
+  // const [isVerified, setIsVerified] = useState(false);
 
   return (
     <div className="min-h-screen bg-black overflow-hidden">
 
-      {!isVerified && (
+      {/* {!isVerified && (
         <Ageristrict onVerify={() => setIsVerified(true)} />
       )}
 
-      {isVerified && (
+      {isVerified && ( */}
         <>
           <Herosection />
           <FeaturedProduct/>
@@ -26,7 +26,7 @@ export default function Home() {
           <Gallery />
           <Getintouch />
         </>
-      )}
+      {/* )} */}
 
     </div>
   );

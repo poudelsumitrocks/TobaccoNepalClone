@@ -1,0 +1,96 @@
+.about-section {
+    position: relative;
+    height: 90vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Blurred background image */
+.about-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px);
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+/* Dark overlay on top of blur */
+.about-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.20);
+    z-index: 5;
+}
+
+/* Content centered */
+.about-content {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.about-cont{
+    /* margin-bottom: 16px; */
+    display: flex;
+        flex-direction: column;
+     justify-content: center;
+    align-items: center;
+}
+/* Title text */
+.about-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #BE6B22;
+    margin-bottom: 8px;
+   text-shadow: 2px 2px 6px #6e390b;;
+
+}
+
+.about-para {
+  color: #EAB308;           
+  font-size: 1.5rem;     
+  max-width: 800px;        
+  text-align: center;       
+  
+  line-height: 1.75rem;    
+font-weight: 600;
+}
+
+/* .about-himal{
+    background-color: black;
+    padding: 5rem 0 ;
+}
+.about-main{
+    color: white;
+    max-height: 1600px;
+    max-width: 1600px;
+}
+.about-heading {
+    font-weight: 700;
+    color: #EAB308; 
+    font-family: 'Poppins', sans-serif; 
+    text-align: center; 
+}
+.about-para{
+    display: flex;
+}
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} */

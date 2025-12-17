@@ -35,11 +35,11 @@ const similarProducts = allSimilar
 
         <div className="grid lg:grid-cols-2 gap-12 mb-20">
           <div className="relative w-full max-w-md mx-auto lg:max-w-lg">
-            <div className="bg-white rounded-2xl  shadow-2xl mb-6 flex items-center justify-center">
+            <div className="bg-white rounded-2xl  shadow-2xl mb-6 flex items-center justify-center aspect-4/3">
               <img
                 src={product.images}
                 alt={product.name}
-                className="w-full h-full object-cover  rounded-2xl"
+                className="max-w-full  max-h-full object-cover  rounded-2xl"
               />
             </div>
             <div className="grid grid-cols-5 gap-4">
@@ -80,20 +80,20 @@ const similarProducts = allSimilar
           </div>
         </div>
         <div className="space-y-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <h2 className="text-3xl font-bold text-[#EAB308]">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-center gap-3 ">
+              <h2 className="text-3xl font-bold text-[#EAB308] ">
                 Similar Products
               </h2>
-              <div className="w-8 h-8 bg-[#EAB308] rounded-full flex items-center justify-center">
-                <FiExternalLink className="w-4 h-4 text-black" size={24} />
+              <div className="w-8 h-8 bg-[#EAB308] rounded-full flex items-center justify-center ">
+                <FiExternalLink className=" w-4 h-4 text-black" size={24} />
               </div>
             </div>
             <Link
               href={`/product?category=${product.category}`}
               className="text-[#D2863C] hover:text-[#EAB308] transition-colors font-medium flex justify-center items-center gap-2"
             >
-              View All{" "}
+              View Al
               <span>
                 <HiArrowLongRight />
               </span>

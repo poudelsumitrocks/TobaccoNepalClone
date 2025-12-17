@@ -1,5 +1,7 @@
 "use client";
+import Link from "next/link";
 import useSWR from "swr";
+import { HiArrowLongRight } from "react-icons/hi2";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function Featuredproduct() {
   const {
@@ -29,8 +31,9 @@ export default function Featuredproduct() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 px-2">
             {selectedProducts.map((item) => (
-              <div
+              <Link
                 key={item.id}
+                href={`/product/${item.id}`}
                 className="h-96 w-full bg-[#1A1A1A] border flex flex-col max-w-sm mx-auto justify-between rounded-2xl hover:border-[#eab308]/30 hover:shadow-2xl transition-all duration-400 ease-out "
               >
                 <div className="h-2/3 flex items-center rounded-tl-2xl rounded-tr-2xl bg-[#111111] justify-center overflow-hidden">
@@ -47,10 +50,24 @@ export default function Featuredproduct() {
                   {item.description}
                 </p>
                 </div>
-              </div>
+              </Link>
             ))}
-         
         </div>
+         <div className="flex justify-end items-center my-4 mr-4 w-full">
+            <Link
+              href={"/product"}
+              className="text-[#EAB308] text-base font-semibold  hover:text-yellow-300 flex justify-center items-center gap-2 "
+            >
+              View All
+              <span>
+                <HiArrowLongRight />
+              </span>
+            </Link>
+         </div>
+         <div className="mt-8">
+
+         <Link href={"/product"} className="bg-[#eab308] text-black cursor-pointer hover:bg-amber-300 sm:text-[18px] font-bold text-shadow-2xs ] px-4 py-2 sm:px-6 sm:py-2 rounded-lg shadow-[0_4px_6px_rgba(0,0,0,0.3)] ">View Products</Link>
+         </div>
       </section>
     </div>
   );

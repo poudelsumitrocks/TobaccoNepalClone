@@ -1,5 +1,6 @@
 import "./blog.css";
 import { IoPerson } from "react-icons/io5";
+import Link from "next/link";
 export default function page() {
   return (
     <div className="blog-container">
@@ -50,7 +51,7 @@ export default function page() {
               </div>
 
               <div className="blog-button">
-                <h1>Learn More</h1>
+                <Link href={`/blog/1`}>Learn More</Link>
               </div>
             </div>
           </div>

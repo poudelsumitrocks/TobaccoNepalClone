@@ -12,7 +12,7 @@
       "name": "Ratna Chhap",
       "description": "Ratna Chhap Jarda Surti is one of Uchha Himal’s most renowned traditional tobacco products. Made from finely cured tobacco leaves, it offers a smooth texture, rich aroma, and deep flavor that appeals to seasoned Jarda users. Its purity and consistency have made Ratna Chhap a respected name among tobacco connoisseurs.",
       "isFeatured": true,
-      "category": "surti",
+      "category": "jarda",
       "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401686/Products/pg3fof44lya9jcff3tlz.jpg"
     },
     {
@@ -34,7 +34,7 @@
     {
       "id": 5,
       "name": "S.S. Parag",
-      "description": "S.S. Parag Pan Masala is a non-tobacco blend that captures the freshness of natural areca nut and aromatic spices. Its balanced flavor and pleasant fragrance make it a refreshing choice for those seeking a premium chewing experience without tobacco. Each pack offers a crisp, uplifting taste perfect for all occasions.",
+      "description": "S.S. Parag Pan Masala is a non-tobaccoF blend that captures the freshness of natural areca nut and aromatic spices. Its balanced flavor and pleasant fragrance make it a refreshing choice for those seeking a premium chewing experience without tobacco. Each pack offers a crisp, uplifting taste perfect for all occasions.",
       "isFeatured": false,
       "category": "pan-masala",
       "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401500/Products/ng4aewpmlmvgyye4zdpk.jpg"
@@ -44,7 +44,7 @@
       "name": "Sultan",
       "description": "Sultan is a versatile blend that embodies strength and sophistication. Combining tobacco, lime, and spices in perfect proportion, it delivers a powerful, energizing flavor. Whether enjoyed as Gutkha, Khaini, or Surti, Sultan provides a distinctive experience — bold, aromatic, and deeply satisfying.",
       "isFeatured": false,
-      "category": "gutkha",
+      "category": "surti",
       "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401398/Products/s90afyymmwk0wtvcmr5y.jpg"
     },
     {
@@ -52,7 +52,7 @@
       "name": "Hans",
       "description": "Hans represents purity and excellence in tobacco craftsmanship. Its carefully selected ingredients create a harmonious blend of bold tobacco and aromatic spices, offering a rich yet smooth chewing experience. Available as both Gutkha and Surti, Hans is a symbol of Uchha Himal’s dedication to premium taste and quality.",
       "isFeatured": true,
-      "category": "gutkha",
+      "category": "surti",
       "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401289/Products/hcn4pa8vgcp1vsoxjack.jpg"
     },
     {
@@ -60,7 +60,7 @@
       "name": "2100",
       "description": "2100 is a dual-purpose blend that caters to Gutkha and Surti enthusiasts alike. The product features fine-cut tobacco enriched with natural flavorings for a rich, satisfying chew. Known for its balanced strength and smooth texture, 2100 is designed to deliver lasting freshness and satisfaction in every use.",
       "isFeatured": false,
-      "category": "surti",
+      "category": "gutkha",
       "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401216/Products/xaashtk5h6flpk2sgebg.jpg"
     },
     {
@@ -80,18 +80,55 @@
       "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401061/Products/d1440tuftjyyzuqhseqb.jpg"
     },{
         "id":11,
-        "name" :" SHIKAR",
+
+
+      "name":"Parijat",
+      "description":"Parijat Jarda is a premium loose tobacco prepared from specially cured leaves that offer a smooth, natural aroma and balanced strength. It’s ideal for traditional users who appreciate the raw, unblended taste of fine Jarda tobacco. The leaf quality and precise curing process ensure an even burn and satisfying mouthfeel.",
+      "isFeatured":"true",
+      "category":"jarda",
+      "images":"https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1761400808%2FProducts%2Fhd6szbjhduu23j0bxcdy.jpg&w=750&q=75"
+    },  {
+      "id": 12,
+
+
+              "name" :" SHIKAR",
         "description":"Shikar Gutkha is known for its distinctive and intense flavor. Made from carefully selected tobacco and betel nut, it delivers a strong, energizing chew favored by experienced users. Every pouch of Shikar Gutkha encapsulates tradition, boldness, and excellence — a true reflection of Uchha Himal’s quality-driven manufacturing.",
          "isFeatured": true,
       "category": "gutkha",
       "images":"https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1761400995%2FProducts%2Fcq6j9dncywyuuppxvdeu.jpg&w=750&q=75"
-    },  {
-      "id": 12,
-      "name": "S.S. Parag",
-      "description": "S.S. Parag Pan Masala is a non-tobacco blend that captures the freshness of natural areca nut and aromatic spices. Its balanced flavor and pleasant fragrance make it a refreshing choice for those seeking a premium chewing experience without tobacco. Each pack offers a crisp, uplifting taste perfect for all occasions.",
+    },{
+      "id":13,
+         "name":"Pan Parag",  
+      "description":"Pan Parag Gutkha is an exquisite mixture of betel nut, superior tobacco, and a carefully balanced blend of traditional Indian spices. The result is a refreshing, aromatic, and full-bodied flavor that provides instant satisfaction. Designed for discerning Gutkha lovers, Pan Parag delivers a premium chewing experience with a touch of heritage and class."
+      ,"isFeatured":"true",
+      "category":"gutkha",
+      "images":"https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1761400602%2FProducts%2Fzsqzbdvmsjrzsm07eutj.jpg&w=750&q=75"
+
+    },{
+      "id":14,
+            "name": "S.S. Parag",
+      "description": "S.S. Parag Gutkha stands out for its fine blend of sun-cured tobacco, betel nut, and hand-selected flavoring agents. It offers a smooth yet robust taste with a balanced aroma that leaves a lasting impression. The product’s uniform texture and high-grade ingredients make it one of Uchha Himal’s most popular tobacco blends. ",
       "isFeatured": false,
-      "category": "pan-masala",
+      "category": "gutkha",
       "images": "https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1760615039%2FProducts%2Fuf1mliumvcsauxpurt92.jpg&w=750&q=75"
-    }
-  ]}
-  
+      
+    },{
+      "id":15,
+      "name":"RMD",
+      "description":"RMD Gutkha is a signature blend crafted for those who enjoy the bold and authentic taste of premium tobacco. It combines finely processed betel nut, high-quality tobacco leaves, and select aromatic spices to create a rich and satisfying chew. Known for its consistency and strong flavor, RMD Gutkha represents Uchha Himal’s commitment to craftsmanship and quality in every pouch.",
+      "isFeatured":"true",
+      "category":"gutkha",
+      "images":"https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1762683085%2FProducts%2Fkev0gvmlboklngqdh1nv.jpg&w=750&q=75"
+      }
+    ],
+    "Export":[{
+      "id":16,
+       "name":"Leaves",
+      "description":"",
+      "isFeatured":"false",
+      "category":"export",
+      "images":"https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1752739606%2Fimage%2520gallery%2Fu77orqdjyyuw3vcoeevu.jpg&w=1200&q=75"
+      }
+    ]
+  }
+

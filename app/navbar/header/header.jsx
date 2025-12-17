@@ -10,7 +10,7 @@ export default function Header() {
   const dropdownRef = useRef(null);
   const pathname = usePathname();
 
-  // Close dropdown on outside click
+ 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -88,17 +88,17 @@ export default function Header() {
         </button>
 
         {showDropdown && (
-          <div className="absolute top-full right-0 mt-2 w-48 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/30 p-2 z-10 shadow-lg">
+          <div className="absolute top-full  mt-1 w-48 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/30 p-2 z-10 shadow-lg overflow-hidden transition-all duration-500 ease-in-out pl-4  border-l-2 opacity-100">
             <ul className="flex flex-col p-2">
               <Link
-                href="./gallery/photo"
-                className={dropdownClass("./gallery/photo")}
+                href="/gallery/photo"
+                className={dropdownClass("/gallery/photo")}
                 onClick={() => setShowDropdown(false)}
               >
                 Photo Gallery
               </Link>
               <Link
-                href="./gallery/vedio"
+                href="/gallery/video"
                 className={dropdownClass("/video")}
                 onClick={() => setShowDropdown(false)}
               >

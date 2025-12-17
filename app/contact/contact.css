@@ -1,0 +1,60 @@
+.contact-section {
+    height: 25rem;
+  position: relative;
+  
+}
+.contact-background {
+    position: absolute;
+height: 100%;
+width: 100%;
+inset: 0px;
+object-fit: cover;
+color: transparent;
+width: 100vw;
+
+
+}
+.contact-overlay {
+   position: absolute;
+inset: 0;
+background-color: black;
+opacity: 0.7;
+pointer-events: none;
+}
+.contact-content{
+    position: absolute;
+inset: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+gap: 1.25rem;
+text-align: center;
+}
+.content-title{
+    color: #e9954e;
+font-size: 2rem;
+font-weight: 700;
+z-index: 10;
+}
+@media(min-width: 640px){
+    .content-title{
+         font-size: 4rem;
+    }
+}
+.content-para{
+    color: #c28957;
+font-weight: 700;
+z-index: 10;
+text-align: center;
+font-size: 13px;
+padding-left: 0.5rem;
+padding-right: 0.5rem;
+width: 90%;
+}
+@media(min-width: 640px){
+    .content-para{
+         font-size: 18px;
+          width: 500px;
+    }
+}

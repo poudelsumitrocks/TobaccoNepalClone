@@ -1,4 +1,4 @@
-/* Main hero container */
+
 .hero-section {
     position: relative;
     height: 90vh;
@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-/* Blurred background image */
+
 .hero-background {
     position: absolute;
     top: 0;

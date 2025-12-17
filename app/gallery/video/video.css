@@ -1,0 +1,149 @@
+.video-section {
+    background-color: black;
+    position: relative;
+    height: 90vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding-top: 6.2rem;
+}
+
+.video-content {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.video-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.8rem;
+}
+
+.video-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #ff8904;
+}
+
+.video-para {
+    font-size: medium;
+    width: 700;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    text-align: center;
+    font-size: 1.4rem;
+    color: #d1d5db;
+
+
+}
+
+
+
+.video-buttom {
+    display: flex;
+    width: 300px;
+    gap: 12;
+
+}
+
+.video-product {
+    background-color: #eab308;
+    color: white;
+    transition: background-color 0.3s ease;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    width: 80%;
+    cursor: pointer;
+
+}
+
+.video-product:hover {
+    background-color: #C76F44;
+}
+
+.video-learn {
+    border-radius: 6px;
+    font-weight: bold;
+    width: 80%;
+    border: 2px solid #BE6B22;
+    background: black;
+    color: white;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.video-learn:hover {
+    background-color: #1f2937;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* .vedio-gallery {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+@media (min-width: 768px) {
+    .vedio-gallery {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .vedio-gallery {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+.vedio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    background-color: black;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    padding-bottom: 4rem;
+    padding-top: 1.5rem;
+
+
+}
+
+.vedio-item {
+    width: 22.5rem;       
+  height: 16rem;  
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: 1px solid #1f1f1f;
+    box-shadow: 0 2px 20px rgba(110, 110, 110, 0.5);
+    transition: all 0.3s;
+    background-color: #111827
+}
+
+.vedio-item:hover {
+    transform: scale(1.03);
+}
+
+.vedio-vedio {
+    width: 100%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 0.5rem;
+} */

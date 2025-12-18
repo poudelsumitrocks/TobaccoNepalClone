@@ -12,7 +12,7 @@ import { getProducts } from "./data";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
-
+import Popup from "./Popup"
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Page() {
@@ -20,9 +20,12 @@ export default function Page() {
   const [active, setActive] = useState("all");
   const [sort, setSort] = useState("latest");
   const [currentPage, setCurrentPage] = useState(1);
-  const router=useRouter();
-  const searchParams=useSearchParams();
-  const pageFromUrl=parseInt(searchParams.get("page"))||1
+  const [search, setSearch] = useState("");
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // const pageFromUrl=parseInt(searchParams.get("page"))||1
   const itemsPerPage = 10;
 
   const {
@@ -34,9 +37,8 @@ export default function Page() {
   // const specialIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const categories = ["all", "gutkha", "surti", "jarda", "pan-masala"];
   // const [currentCategory, setCurrentCategory] = useState("all");
-  
-  const [displayProducts, setDisplayProducts] = useState([]);
 
+  const [displayProducts, setDisplayProducts] = useState([]);
 
   // const filteredProducts =
   //   active === "all"
@@ -48,7 +50,7 @@ export default function Page() {
   //   const dateB = new Date(b.createdAt).getTime();
   //   return sort === "latest" ? dateB - dateA : dateA - dateB;
   // });
-    useEffect(() => {
+  useEffect(() => {
     if (!products) return;
 
     const filtered =
@@ -66,7 +68,7 @@ export default function Page() {
     setCurrentPage(1);
     router.push("/product?page=1", { scroll: false });
   }, [products, active, sort]);
-  
+
   // const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
   // const indexofLastItem = currentPage * itemsPerPage;
   // const indexofFirstItem = indexofLastItem - itemsPerPage;
@@ -76,14 +78,19 @@ export default function Page() {
   // );
   const totalPages = Math.ceil(displayProducts.length / itemsPerPage);
   const indexofLastItem = currentPage * itemsPerPage;
-const indexofFirstItem = indexofLastItem - itemsPerPage;
+  const indexofFirstItem = indexofLastItem - itemsPerPage;
 
-const currentProducts = displayProducts.slice(
-  indexofFirstItem,
-  indexofLastItem
-);
-    const goToPage = (page) => {
+  const currentProducts = displayProducts.slice(
+    indexofFirstItem,
+    indexofLastItem
+  );
+  const goToPage = (page) => {
     setCurrentPage(page);
+    if(active==="all"){
+      router.push("/product")
+    }else{
+      
+    }
     router.push(`/product?page=${page}`, { scroll: false });
   };
 
@@ -151,8 +158,22 @@ const currentProducts = displayProducts.slice(
         <div className="search-container mb-8">
           <div className="search-box">
             <CiSearch className="search-icon" />
-            <input type="text" placeholder="Search products..." />
-            <div className="search-btn">Search</div>
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+
+            <div
+              className="search-btn"
+              onClick={() => {
+                setCurrentPage(1);
+                router.push("/product?page=1", { scroll: false });
+              }}
+            >
+              Search
+            </div>
           </div>
 
           <div className="filter-btn">
@@ -206,6 +227,16 @@ const currentProducts = displayProducts.slice(
           </div>
         </div>
 
+        {active !== "all" && (
+          <div className="mb-6">
+            <Popup
+              category={active}
+              setCategory={setActive}
+              currentCategoryName={getProducts(active)}
+            />
+          </div>
+        )}
+
         <div className="text-center mb-8">
           <h1 className="text-[#D2863C] text-lg font-medium">
             Showing{" "}
@@ -214,7 +245,7 @@ const currentProducts = displayProducts.slice(
             </span>{" "}
             of{" "}
             <span className="text-[#EAB308] font-bold">
-              { displayProducts.length}
+              {displayProducts.length}
             </span>{" "}
             products
           </h1>
@@ -261,7 +292,7 @@ const currentProducts = displayProducts.slice(
           <div className="flex justify-center items-center gap-3 mt-10 ">
             {/* Previous button */}
             <button
-              className="p-4 rounded-xl bg-linear-to-r from-[#2D2D2D] to-[#1A1A1A] text-white hover:from-[#3D3D3D] hover:to-[#2D2D2D] transition-all duration-300 shadow-lg transform hover:scale-105"
+              className="p-4 rounded-xl bg-linear-to-r from-[#2D2D2D] to-[#1A1A1A] text-white hover:from-[#3D3D3D] hover:to-[#2D2D2D] transition-all duration-300 shadow-lg transform hover:scale-105 opacity-50 cursor-not-allowed"
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
             >
@@ -272,7 +303,7 @@ const currentProducts = displayProducts.slice(
             {Array.from({ length: totalPages }, (_, i) => (
               <button
                 key={i + 1}
-                onClick={() => goToPage(i+1)}
+                onClick={() => goToPage(i + 1)}
                 className={`w-12 h-12 flex items-center justify-center rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-110 ${
                   currentPage === i + 1
                     ? "bg-[#EAB308] text-black shadow-lg shadow-[#EAB308]/50 glow-effect"
@@ -285,7 +316,7 @@ const currentProducts = displayProducts.slice(
 
             {/* Next button */}
             <button
-              className="p-4 rounded-xl bg-linear-to-r from-[#2D2D2D] to-[#1A1A1A] text-white hover:from-[#3D3D3D] hover:to-[#2D2D2D] transition-all duration-300 shadow-lg transform hover:scale-105"
+              className="p-4 rounded-xl bg-linear-to-r from-[#2D2D2D] to-[#1A1A1A] text-white hover:from-[#3D3D3D] hover:to-[#2D2D2D] transition-all duration-300 shadow-lg transform hover:scale-105 opacity-50 cursor-not-allowed"
               onClick={() =>
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }

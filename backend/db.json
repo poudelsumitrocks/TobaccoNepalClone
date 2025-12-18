@@ -121,14 +121,30 @@
       "images":"https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1762683085%2FProducts%2Fkev0gvmlboklngqdh1nv.jpg&w=750&q=75"
       }
     ],
-    "Export":[{
-      "id":16,
+    "gallery":[{
+      "id":3,
        "name":"Leaves",
       "description":"",
       "isFeatured":"false",
       "category":"export",
       "images":"https://www.tobacconepal.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcds6y8vf%2Fimage%2Fupload%2Fv1752739606%2Fimage%2520gallery%2Fu77orqdjyyuw3vcoeevu.jpg&w=1200&q=75"
-      }
+      },
+      {
+      "id": 1,
+      "name": "Sultan",
+      "description": "Sultan is a versatile blend that embodies strength and sophistication. Combining tobacco, lime, and spices in perfect proportion, it delivers a powerful, energizing flavor. Whether enjoyed as Gutkha, Khaini, or Surti, Sultan provides a distinctive experience — bold, aromatic, and deeply satisfying.",
+      "isFeatured": false,
+      "category": "surti",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401398/Products/s90afyymmwk0wtvcmr5y.jpg"
+    },
+    {
+      "id": 2,
+      "name": "2100",
+      "description": "2100 is a dual-purpose blend that caters to Gutkha and Surti enthusiasts alike. The product features fine-cut tobacco enriched with natural flavorings for a rich, satisfying chew. Known for its balanced strength and smooth texture, 2100 is designed to deliver lasting freshness and satisfaction in every use.",
+      "isFeatured": false,
+      "category": "gutkha",
+      "images": "https://res.cloudinary.com/dcds6y8vf/image/upload/v1761401216/Products/xaashtk5h6flpk2sgebg.jpg"
+    }
     ]
   }
 

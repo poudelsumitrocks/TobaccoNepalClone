@@ -18,6 +18,7 @@
 //   );
 // }
 
+import Link from "next/link";
 import "./herosection.css"
 export default function Page() {
   return (
@@ -36,7 +37,7 @@ export default function Page() {
           <p className="hero-para">Experience the finest quality tobacco products . Our traditional methods and sustainable practices ensure exceptional quality in every product.</p>
             </div>
           <div className="hero-buttom  w-96 ">
-            <button className="hero-product">View Products</button>
+            <Link href={"/product"} className="hero-product">View Products</Link>
             <button className="hero-learn">Learn More</button>
           </div>
         </div>

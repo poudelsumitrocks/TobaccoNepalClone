@@ -7,29 +7,21 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Photoproduct() {
   const [active, setActive] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 3;
+  const {
+    data: products,
+    error,
+    isLoading,
+  } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/gallery`, fetcher);
 
-  const { data: products, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/products`,
-    fetcher
-  );
-// const { data: exportData } = useSWR(
-//   `${process.env.NEXT_PUBLIC_EXPORT_API_URL}`,
-//   fetcher
-// );
-  const specialIds = [16, 6, 8];
+ 
+  const specialIds = [ 1,2, 3];
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
 
-
-  const datas = [
-    "all",
-    "gutkha",
-    "surti",
-    "jarda",
-    "pan-masala",
-    "export",
-  ];
+  const datas = ["all", "gutkha", "surti", "jarda", "pan-masala", "export"];
 
   function DataProduct(path) {
     return `px-4 py-2 rounded-md text-sm font-medium transition-all
@@ -40,7 +32,6 @@ export default function Photoproduct() {
       }`;
   }
 
-  
   const filteredProducts =
     active === "all"
       ? products
@@ -52,7 +43,6 @@ export default function Photoproduct() {
 
   return (
     <div>
-   
       {/* FILTER BUTTONS */}
       <section className="py-8  flex justify-center w-full bg-black ">
         <div className="flex gap-1 bg-gray-800 p-1 rounded-lg display-flex justify-between w-[1050px] ">
@@ -101,32 +91,31 @@ export default function Photoproduct() {
           )}
         </div>
 
-        {active !== "All Product" &&  (
+        {active !== "All Product" && (
           <div className="text-center mt-8">
-            {filteredProducts.length === 0 && (
-              filteredProducts.map((item)=>(
-               <div
-                key={item.id}
-                className="relative group h-64 bg-[#1A1A1A] rounded-2xl overflow-hidden border hover:border-yellow-500/40 transition-all"
-              >
-                {/* IMAGE */}
-                <img
-                  src={item.images}
-                  alt={item.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+            {filteredProducts.length === 0 &&
+              filteredProducts.map((item) => (
+                <div
+                  key={item.id}
+                  className="relative group h-64 bg-[#1A1A1A] rounded-2xl overflow-hidden border hover:border-yellow-500/40 transition-all"
+                >
+                  {/* IMAGE */}
+                  <img
+                    src={item.images}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
 
-                {/* OVERLAY */}
-                <span
-                  className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent
+                  {/* OVERLAY */}
+                  <span
+                    className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent
                              flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity
                              text-white font-semibold"
-                >
-                  {item.name}
-                </span>
-              </div>
-              ))
-            )}
+                  >
+                    {item.name}
+                  </span>
+                </div>
+              ))}
           </div>
         )}
       </section>

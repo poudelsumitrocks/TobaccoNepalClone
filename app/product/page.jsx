@@ -11,7 +11,7 @@ import useSWR from "swr";
 import { getProducts } from "./data";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import Popup from "./Popup"
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -23,9 +23,9 @@ export default function Page() {
   const [search, setSearch] = useState("");
 
   const router = useRouter();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams("page");
 
-  // const pageFromUrl=parseInt(searchParams.get("page"))||1
+ 
   const itemsPerPage = 10;
 
   const {
@@ -34,22 +34,11 @@ export default function Page() {
     isLoading,
   } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/products`, fetcher);
 
-  // const specialIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const categories = ["all", "gutkha", "surti", "jarda", "pan-masala"];
-  // const [currentCategory, setCurrentCategory] = useState("all");
+ 
 
   const [displayProducts, setDisplayProducts] = useState([]);
 
-  // const filteredProducts =
-  //   active === "all"
-  //     ? products ?? []
-  //     : (products ?? []).filter((item) => item.category === active);
-
-  // const sortedProducts = [...filteredProducts].sort((a, b) => {
-  //   const dateA = new Date(a.createdAt).getTime();
-  //   const dateB = new Date(b.createdAt).getTime();
-  //   return sort === "latest" ? dateB - dateA : dateA - dateB;
-  // });
   useEffect(() => {
     if (!products) return;
 
@@ -69,13 +58,7 @@ export default function Page() {
     router.push("/product?page=1", { scroll: false });
   }, [products, active, sort]);
 
-  // const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
-  // const indexofLastItem = currentPage * itemsPerPage;
-  // const indexofFirstItem = indexofLastItem - itemsPerPage;
-  // const currentProducts = sortedProducts.slice(
-  //   indexofFirstItem,
-  //   indexofLastItem
-  // );
+
   const totalPages = Math.ceil(displayProducts.length / itemsPerPage);
   const indexofLastItem = currentPage * itemsPerPage;
   const indexofFirstItem = indexofLastItem - itemsPerPage;
@@ -94,27 +77,6 @@ export default function Page() {
     router.push(`/product?page=${page}`, { scroll: false });
   };
 
-  // useEffect(() => {
-  //   setCurrentPage(1);
-  // }, [active, sort]);
-
-  // const selectedProducts =
-  //   active === "all"
-  //     ? (filteredProducts || [])
-  //         .filter((p) => specialIds.includes(p.id))
-  //         .sort(
-  //           (a, b) => {
-  //             const dateA = new Date(a.createdAt).getTime();
-  //             const dateB = new Date(b.createdAt).getTime();
-  //             return sort === "latest" ? dateB - dateA : dateA - dateB;
-  //           }
-  //           // specialIds.indexOf(a.id) - specialIds.indexOf(b.id)
-  //         )
-  //     : [...(filteredProducts || [])].sort((a, b) => {
-  //         const dateA = new Date(a.createdAt).getTime();
-  //         const dateB = new Date(b.createdAt).getTime();
-  //         return sort === "latest" ? dateB - dateA : dateA - dateB;
-  //       });
 
   function dataProduct(path) {
     return `flex items-center justify-center h-20 w-56 px-2 py-2 rounded-lg text-sm lg:text-lg font-semibold transition-all duration-300 cursor-pointer ${
@@ -125,8 +87,7 @@ export default function Page() {
   }
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading products</p>;
-  // const showing = selectedProducts.length;
-  // const total = filteredProducts.length;
+
 
   return (
     <div className="product-container ">
@@ -185,11 +146,7 @@ export default function Page() {
               >
                 {sort === "latest" ? "Latest" : "Oldest"}
                 <IoIosArrowDown className="learn-icon" size={16} />
-                {/* {dropdown ? (
-                  <IoIosArrowDown className="learn-icon" size={16} />
-                ) : (
-                  <IoIosArrowDown className="learn-icon" size={16} />
-                )} */}
+            
               </h1>
               {dropdown && (
                 <div className="absolute top-full left-[-48] mt-2 w-36 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/30 p-2 z-10 shadow-lg">

@@ -63,7 +63,7 @@ export default function Page() {
 
     setDisplayProducts(sorted);
     setCurrentPage(1);
-    router.push("/product?page=1", { scroll: false });
+    router.push("/product", { scroll: false });
   }, [products, active, search, sort]);
 
   const totalPages = Math.ceil(displayProducts.length / itemsPerPage);
@@ -73,7 +73,7 @@ export default function Page() {
 
   const goToPage = (page) => {
     setCurrentPage(page);
-    router.push(`/product?page=${page}&search=${encodeURIComponent(search)}&sort=${sort}`, { scroll: false });
+    router.push(`/product?page=${page}`, { scroll: false });
   };
 
   function dataProduct(path) {
@@ -130,7 +130,7 @@ export default function Page() {
         setSearch("");
         // Keep search term when changing category
         router.push(
-          `/product?page=1&search=${encodeURIComponent(search)}&category=${cat}&sort=${sort}`,
+          `/product?&search=${encodeURIComponent(search)}&category=${cat}&sort=${sort}`,
           { scroll: false }
         );
       }}

@@ -15,16 +15,33 @@ export default function Search({ search, setSearch, sort, setSort }) {
 
   const [dropdown, setDropdown] = useState(false);
 
+  // Initialize search and sort from URL on mount
   useEffect(() => {
     setSearch(searchQuery);
     setSort(sortParam);
   }, [searchQuery, sortParam, setSearch, setSort]);
 
   const handleSearch = () => {
-    router.push(
-      `/product?page=1&search=${encodeURIComponent(search)}&sort=${sort}`,
-      { scroll: false }
-    );
+    const query = new URLSearchParams({
+      page: 1,
+      search: search || "",
+      sort: sort,
+    }).toString();
+
+    router.push(`/product?${query}`, { scroll: false });
+  };
+
+  const handleSortChange = (newSort) => {
+    setSort(newSort);
+    setDropdown(false);
+
+    const query = new URLSearchParams({
+      page: 1,
+      search: search || "",
+      sort: newSort,
+    }).toString();
+
+    router.push(`/product?${query}`, { scroll: false });
   };
 
   return (
@@ -55,30 +72,14 @@ export default function Search({ search, setSearch, sort, setSort }) {
             <div className="absolute top-full left-[-48] mt-2 w-36 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/30 p-2 z-10 shadow-lg">
               <ul className="flex flex-col gap-2">
                 <li
-                  className="px-2 py-2 cursor-pointer hover:bg-[#eab308]"
-                  onClick={() => {
-                    setSort("latest");
-                    setDropdown(false);
-                    router.push(
-                      `/product?page=1&search=${encodeURIComponent(
-                        search
-                      )}&sort=latest`
-                    );
-                  }}
+                  className="px-2 py-2 cursor-pointer rounded-lg hover:bg-[#eab308]"
+                  onClick={() => handleSortChange("latest")}
                 >
                   Latest
                 </li>
                 <li
-                  className="px-2 py-2 cursor-pointer hover:bg-[#eab308]"
-                  onClick={() => {
-                    setSort("oldest");
-                    setDropdown(false);
-                    router.push(
-                      `/product?page=1&search=${encodeURIComponent(
-                        search
-                      )}&sort=oldest`
-                    );
-                  }}
+                  className="px-2 py-2 cursor-pointer rounded-lg hover:bg-[#eab308]"
+                  onClick={() => handleSortChange("oldest")}
                 >
                   Oldest
                 </li>

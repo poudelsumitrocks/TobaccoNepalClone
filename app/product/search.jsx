@@ -1,0 +1,92 @@
+"use client";
+
+import { CiSearch } from "react-icons/ci";
+import { IoFilter } from "react-icons/io5";
+import { IoIosArrowDown } from "react-icons/io";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
+export default function Search({ search, setSearch, sort, setSort }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const searchQuery = searchParams.get("search") || "";
+  const sortParam = searchParams.get("sort") || "latest";
+
+  const [dropdown, setDropdown] = useState(false);
+
+  useEffect(() => {
+    setSearch(searchQuery);
+    setSort(sortParam);
+  }, [searchQuery, sortParam, setSearch, setSort]);
+
+  const handleSearch = () => {
+    router.push(
+      `/product?page=1&search=${encodeURIComponent(search)}&sort=${sort}`,
+      { scroll: false }
+    );
+  };
+
+  return (
+    <div className="search-container">
+      <div className="search-box">
+        <CiSearch className="search-icon" />
+        <input
+          type="text"
+          placeholder="Search by product name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+        />
+        <div className="search-btn" onClick={handleSearch}>
+          Search
+        </div>
+      </div>
+
+      <div className="filter-btn">
+        <IoFilter className="filter-icon" size={20} />
+        <div className="learn">
+          <h1 className="learn-header" onClick={() => setDropdown(!dropdown)}>
+            {sort === "latest" ? "Latest" : "Oldest"}
+            <IoIosArrowDown className="learn-icon" size={16} />
+          </h1>
+
+          {dropdown && (
+            <div className="absolute top-full left-[-48] mt-2 w-36 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/30 p-2 z-10 shadow-lg">
+              <ul className="flex flex-col gap-2">
+                <li
+                  className="px-2 py-2 cursor-pointer hover:bg-[#eab308]"
+                  onClick={() => {
+                    setSort("latest");
+                    setDropdown(false);
+                    router.push(
+                      `/product?page=1&search=${encodeURIComponent(
+                        search
+                      )}&sort=latest`
+                    );
+                  }}
+                >
+                  Latest
+                </li>
+                <li
+                  className="px-2 py-2 cursor-pointer hover:bg-[#eab308]"
+                  onClick={() => {
+                    setSort("oldest");
+                    setDropdown(false);
+                    router.push(
+                      `/product?page=1&search=${encodeURIComponent(
+                        search
+                      )}&sort=oldest`
+                    );
+                  }}
+                >
+                  Oldest
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

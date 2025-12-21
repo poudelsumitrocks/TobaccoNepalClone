@@ -6,6 +6,8 @@ export const getProducts = (category) => {
             return 'Gutkha Products'
         case 'surti':
             return 'Surti/Khaini Products'
+        case 'khaini':
+            return 'Surti/Khaini Products'
         case 'jarda':
             return 'Jarda Products'
         case 'pan-masala':

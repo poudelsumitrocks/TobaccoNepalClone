@@ -30,7 +30,6 @@ export default function Page() {
     `${process.env.NEXT_PUBLIC_API_URL}/products`,
     fetcher
   );
-
   const categories = ["all", "gutkha", "surti", "jarda", "pan-masala"];
 
   const [displayProducts, setDisplayProducts] = useState([]);

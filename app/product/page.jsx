@@ -54,15 +54,13 @@ export default function Page() {
 
     // Sort
     const sorted = [...filtered].sort((a, b) => {
-      if (!a.createdAt) return 0; // in case no createdAt field
-      const dateA = new Date(a.createdAt).getTime();
-      const dateB = new Date(b.createdAt).getTime();
-      return sort === "latest" ? dateB - dateA : dateA - dateB;
+      
+      return sort === "latest" ? b.id-a.id:a.id-b.id;
     });
 
     setDisplayProducts(sorted);
     setCurrentPage(1);
-    router.push("/product", { scroll: false });
+    // router.push("/product", { scroll: false });
   }, [products, active, search, sort]);
 
   const totalPages = Math.ceil(displayProducts.length / itemsPerPage);

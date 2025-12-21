@@ -36,8 +36,8 @@ export default function Search({ search, setSearch, sort, setSort }) {
     setDropdown(false);
 
     const query = new URLSearchParams({
-      page: 1,
-      search: search || "",
+      // page: 1,
+      // search: search || "",
       sort: newSort,
     }).toString();
 

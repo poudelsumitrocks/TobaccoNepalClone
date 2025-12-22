@@ -2,16 +2,16 @@ import Link from "next/link";
 import { MdArrowRightAlt } from "react-icons/md";
 export default function page() {
   return (
-    <div className="min-w-full max-h-[1600px]  py-16 ">
-      <section className="flex flex-col  justify-center items-center  px-14">
+    <div className="min-w-full max-h-[1600px] sm:max-h-[1400px] sm:py-8 md:py-1 lg:py-16 ">
+      <section className="flex flex-col  justify-center items-center  sm:px-10 md:px-12 lg:px-14">
         <div className="flex flex-col justify-center items-center text-5xl font-bold mb-6 ">
           <h1 className="text-[#BE6B22] text-5xl font-bold mb-8">Gallery</h1>
-          <p className="text-center text-[#EAB308] font-semibold text-2xl leading-relaxed max-w-5xl mx-auto px-4 ">
+          <p className="text-center text-[#EAB308] font-semibold text-2xl leading-relaxed lg:max-w-5xl md:max-w-4xl  mx-auto px-4 ">
             Discover how we grow, process, and share our tobacco through short
             videos that highlight our story, people, and passion.
           </p>
         </div>
-        <div className=" w-full flex items-center justify-between my-4">
+        <div className=" w-full flex items-center justify-between my-4 sm:px-10 md:px-12 ld:px-14">
           <h1 className="text- text-[#EBCB66] text-xl font-bold">
             Photo Gallery
           </h1>

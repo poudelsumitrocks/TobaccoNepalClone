@@ -125,6 +125,7 @@ export default function Page() {
       setCategory={(cat) => {
         setActive(cat);
         setSearch("");
+       setSort("")
         // Keep search term when changing category
         router.push(
           `/product?&search=${encodeURIComponent(search)}&category=${cat}&sort=${sort}`,
@@ -133,10 +134,15 @@ export default function Page() {
       }}
       setSearch={setSearch}
       currentCategoryName={
-        search
-          ? `Search: "${search}" ${active !== "all" ? ` | ${getProducts(active)}` : ""}`
-          : getProducts(active)
-      }
+          search
+            ? `Search: "${search}" ${active !== "all" ? ` | ${getProducts(active)}` : ""}`
+            : getProducts(active)
+      } 
+      currentCategorysort={
+          search
+            ? `${sort} ${active !== "latest" ? ` | ${getProducts(active)}` : ""}`
+          :""
+      }  
     />
   </div>
 )}

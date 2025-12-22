@@ -23,9 +23,9 @@ export default function Search({ search, setSearch, sort, setSort }) {
 
   const handleSearch = () => {
     const query = new URLSearchParams({
-      page: 1,
+      // page: 1,
       search: search || "",
-      sort: sort,
+      // sort: sort,
     }).toString();
 
     router.push(`/product?${query}`, { scroll: false });
@@ -38,7 +38,7 @@ export default function Search({ search, setSearch, sort, setSort }) {
     const query = new URLSearchParams({
       // page: 1,
       // search: search || "",
-      sort: newSort,
+      // sort: newSort,
     }).toString();
 
     router.push(`/product?${query}`, { scroll: false });

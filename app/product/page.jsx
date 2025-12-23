@@ -26,10 +26,11 @@ export default function Page() {
   const itemsPerPage = 10;
 
   // Get all products from backend
-  const { data: products, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/products`,
-    fetcher
-  );
+  // const { data: products, error, isLoading } = useSWR(
+  //   `${process.env.NEXT_PUBLIC_API_URL}/products`,
+  //   fetcher
+  // );
+  const {data: products,error,isLoading}=useSWR("https://productsbackend-0zfz.onrender.com/products",fetcher)
   const categories = ["all", "gutkha", "surti", "jarda", "pan-masala"];
 
   const [displayProducts, setDisplayProducts] = useState([]);
@@ -38,7 +39,7 @@ export default function Page() {
   useEffect(() => {
     if (!products) return;
 
-    let filtered = products;
+    let filtered = products.products;
 
     // Category filter
     if (active !== "all") {

@@ -18,11 +18,11 @@ export default function page() {
         </div>
       </section>
       <section className="py-8 px-4 md:px-6 lg:px-8 bg-black">
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
-    <div className="relative group overflow-hidden rounded-lg  cursor-pointer border border-gray-800 shadow-[0_2px_20px_rgba(110,110,110,0.5)] transition-all duration-300">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pl-10 mb-10">
+    <div className="relative group overflow-hidden rounded-lg  cursor-pointer border border-gray-800 shadow-[0_2px_20px_rgba(110,110,110,0.5)] transition-all duration-300 ">
   
 
-      <video className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-[101%]" controls>
+      <video className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-[101%] " controls>
         <source src="/vediogallery/video.mp4" type="video/mp4" />
       </video>
      

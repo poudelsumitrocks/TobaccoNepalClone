@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { FaAngleDown, FaAngleUp, FaBars, FaTimes } from "react-icons/fa";
@@ -8,6 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showMobileDropdown, setShowMobileDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const pathname = usePathname();
 
@@ -61,20 +61,18 @@ export default function Header() {
       {/* TOP BAR */}
       <div className="h-22 flex items-center justify-between px-4 md:px-10">
 
-        {/* LEFT – LOGO */}
-        <div className="flex items-center">
-          <Link href="/">
-            <img
-              src="/mountain.png"
-              alt="Mountain"
-              width={100}
-              height={60}
-              className="h-14 hover:scale-105 transition-transform"
-            />
-          </Link>
-        </div>
+        {/* LOGO */}
+        <Link href="/">
+          <img
+            src="/mountain.png"
+            alt="Mountain"
+            width={100}
+            height={60}
+            className="h-14 hover:scale-105 transition-transform"
+          />
+        </Link>
 
-        {/* CENTER – DESKTOP MENU */}
+        {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-6 text-white">
           <Link href="/" className={navClass("/")}>Home</Link>
           <Link href="/product" className={navClass("/product")}>Product</Link>
@@ -96,22 +94,20 @@ export default function Header() {
 
             {showDropdown && (
               <div className="absolute top-full mt-2 w-48 bg-[#211f1b] border border-[#eab308]/30 rounded-lg shadow-lg p-2 z-50">
-                <div className="flex flex-col gap-2">
-                  <Link
-                    href="/gallery/photo"
-                    className={dropdownClass("/gallery/photo")}
-                    onClick={() => setShowDropdown(false)}
-                  >
-                    Photo Gallery
-                  </Link>
-                  <Link
-                    href="/gallery/video"
-                    className={dropdownClass("/gallery/video")}
-                    onClick={() => setShowDropdown(false)}
-                  >
-                    Video Gallery
-                  </Link>
-                </div>
+                <Link
+                  href="/gallery/photo"
+                  className={dropdownClass("/gallery/photo")}
+                  onClick={() => setShowDropdown(false)}
+                >
+                  Photo Gallery
+                </Link>
+                <Link
+                  href="/gallery/video"
+                  className={dropdownClass("/gallery/video")}
+                  onClick={() => setShowDropdown(false)}
+                >
+                  Video Gallery
+                </Link>
               </div>
             )}
           </div>
@@ -119,14 +115,14 @@ export default function Header() {
           <Link href="/contact" className={navClass("/contact")}>Contact</Link>
         </div>
 
-        {/* RIGHT – DESKTOP BUTTON */}
+        {/* DESKTOP BUTTON */}
         <div className="hidden md:block">
-          <button className="bg-[#eab308] px-6 py-2 rounded font-bold text-black hover:bg-[#d4a007] transition">
+          <button className="bg-[#eab308] px-6 py-2 rounded font-bold text-black">
             Inquire Now
           </button>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
+        {/* MOBILE BUTTON */}
         <button
           className="md:hidden text-white text-2xl"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -145,13 +141,13 @@ export default function Header() {
 
           {/* Mobile Gallery */}
           <button
-            onClick={() => setShowDropdown(!showDropdown)}
+            onClick={() => setShowMobileDropdown(!showMobileDropdown)}
             className="flex items-center gap-1 text-lg"
           >
-            Gallery {showDropdown ? <FaAngleUp /> : <FaAngleDown />}
+            Gallery {showMobileDropdown ? <FaAngleUp /> : <FaAngleDown />}
           </button>
 
-          {showDropdown && (
+          {showMobileDropdown && (
             <div className="border-l-2 border-[#5e4b14] pl-3 flex flex-col gap-2">
               <Link href="/gallery/photo" className={dropdownMobile("/gallery/photo")}>
                 Photo Gallery
@@ -163,10 +159,6 @@ export default function Header() {
           )}
 
           <Link href="/contact" className={navMobile("/contact")}>Contact</Link>
-
-          <button className="bg-[#eab308] text-black py-2 rounded font-bold">
-            Inquire Now
-          </button>
         </div>
       )}
     </header>

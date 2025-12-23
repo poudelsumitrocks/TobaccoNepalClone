@@ -17,6 +17,16 @@
     justify-content: center;
     padding-top: 6.2rem;
 }
+@media (max-width:768px){
+    .photo-section{
+       height: 80vh;
+    }
+}
+@media (max-width:480px){
+    .photo-section{
+      height: 80vh;
+    }
+}
 
 .photo-content {
     position: absolute;
@@ -28,6 +38,7 @@
 
 }
 
+
 .photo-cont {
     display: flex;
     flex-direction: column;
@@ -36,15 +47,31 @@
     margin-bottom: 1.8rem;
 }
 
+
 .photo-title {
     font-size: 4rem;
     font-weight: bold;
     color: #ff8904;
 }
+@media (max-width:768px){
+    .photo-title{
+        font-size: 3rem;
+        font-weight: bold;
+    color: #ff8904;
+    }
+}
+@media (max-width:480px){
+    .photo-title{
+        font-size: 2rem;
+        font-weight: bold;
+    color: #ff8904;
+    margin-bottom: 1rem;
+    }
+}
 
 .photo-para {
     font-size: medium;
-    width: 900;
+    width: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,20 +80,78 @@
     line-height: 1.1;
     padding-bottom: 3.1rem;
 }
+@media (max-width:768px) {
+    .photo-para {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width:480px) {
+    .photo-para {
+        font-size: 1.1rem;
+        width: 360px;
+        display: flex;
+        padding-bottom: 0.1rem;
+    }
+}
 
 .top-line {
-    display: block;
+    /* display: block; */
     font-size: 1.4rem;
     font-weight: 350;
     color: #d1d5db;
 }
+@media (max-width:768px) {
+    .top-line {
+        font-size: 1.1rem;
+    }
+}
 
+@media (max-width:480px) {
+    .top-line {
+        font-size: 1.1rem;
+        display: none;
+    }
+}
 .bottom-line {
     display: block;
     font-size: 1.4rem;
     font-weight: 500;
-   
     color:#d1d5db;
+}
+@media (max-width:768px) {
+    .bottom-line {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width:480px) {
+    .bottom-line {
+        font-size: 1.1rem;
+        display: none;
+    }
+}
+
+.photo-paramobile {
+    display: none;
+}
+
+
+@media (max-width: 480px) {
+    .photo-paramobile {
+        display: block;
+        max-width: 360px;
+        margin: 0 auto;
+        text-align: center;
+        color: #d1d5db;
+        font-size: 1rem;
+        line-height: 1.25;
+        padding-bottom: 2.5rem;
+    }
+
+    .mobile-br {
+        display: none;
+    }
 }
 
 
@@ -90,6 +175,7 @@
     cursor: pointer;
 
 }
+
 
 .photo-product:hover {
     background-color: #C76F44;

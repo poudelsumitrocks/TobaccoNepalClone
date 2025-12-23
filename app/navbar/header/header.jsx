@@ -11,7 +11,7 @@ export default function Header() {
   const dropdownRef = useRef(null);
   const pathname = usePathname();
 
-  /* Close dropdown on outside click (desktop) */
+  /* Close desktop dropdown on outside click */
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -22,10 +22,11 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  /* Close menus on route change */
+  /* Close desktop & mobile dropdowns on route change, but keep hamburger open */
   useEffect(() => {
-    setMobileMenuOpen(false);
     setShowDropdown(false);
+    setShowMobileDropdown(false);
+    // mobileMenuOpen stays as it is
   }, [pathname]);
 
   const navClass = (path) =>
@@ -50,9 +51,7 @@ export default function Header() {
     }`;
 
   const dropdownMobile = (path) =>
-    `pl-2 py-1 ${
-      pathname === path ? "text-[#eab308]" : "text-white"
-    }`;
+    `pl-2 py-1 ${pathname === path ? "text-[#eab308]" : "text-white"}`;
 
   const isGalleryActive = pathname.startsWith("/gallery");
 
@@ -60,24 +59,33 @@ export default function Header() {
     <header className="w-full bg-[#211f1b] fixed top-0 left-0 z-50">
       {/* TOP BAR */}
       <div className="h-22 flex items-center justify-between px-4 md:px-10">
-
         {/* LOGO */}
-        <Link href="/">
-          <img
-            src="/mountain.png"
-            alt="Mountain"
-            width={100}
-            height={60}
-            className="h-14 hover:scale-105 transition-transform"
-          />
-        </Link>
+        <div className="flex items-center">
+          <Link href="/">
+            <img
+              src="/mountain.png"
+              alt="Mountain"
+              width={100}
+              height={60}
+              className="h-14 hover:scale-105 transition-transform"
+            />
+          </Link>
+        </div>
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-6 text-white">
-          <Link href="/" className={navClass("/")}>Home</Link>
-          <Link href="/product" className={navClass("/product")}>Product</Link>
-          <Link href="/about" className={navClass("/about")}>About</Link>
-          <Link href="/blog" className={navClass("/blog")}>Blog</Link>
+          <Link href="/" className={navClass("/")}>
+            Home
+          </Link>
+          <Link href="/product" className={navClass("/product")}>
+            Product
+          </Link>
+          <Link href="/about" className={navClass("/about")}>
+            About
+          </Link>
+          <Link href="/blog" className={navClass("/blog")}>
+            Blog
+          </Link>
 
           {/* Gallery Dropdown */}
           <div ref={dropdownRef} className="relative">
@@ -112,17 +120,19 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/contact" className={navClass("/contact")}>Contact</Link>
+          <Link href="/contact" className={navClass("/contact")}>
+            Contact
+          </Link>
         </div>
 
         {/* DESKTOP BUTTON */}
         <div className="hidden md:block">
-          <button className="bg-[#eab308] px-6 py-2 rounded font-bold text-black">
+          <button className="bg-[#eab308] px-6 py-2 rounded font-bold text-black hover:bg-[#d4a007] transition">
             Inquire Now
           </button>
         </div>
 
-        {/* MOBILE BUTTON */}
+        {/* MOBILE HAMBURGER BUTTON */}
         <button
           className="md:hidden text-white text-2xl"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -134,12 +144,43 @@ export default function Header() {
       {/* MOBILE MENU */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#211f1b] text-white flex flex-col gap-4 px-6 py-6 border-t border-[#eab308]/20">
-          <Link href="/" className={navMobile("/")}>Home</Link>
-          <Link href="/product" className={navMobile("/product")}>Product</Link>
-          <Link href="/about" className={navMobile("/about")}>About</Link>
-          <Link href="/blog" className={navMobile("/blog")}>Blog</Link>
+          <Link
+            href="/"
+            className={navMobile("/")}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            href="/product"
+            className={navMobile("/product")}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Product
+          </Link>
+          <Link
+            href="/about"
+            className={navMobile("/about")}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            About
+          </Link>
+          <Link
+            href="/blog"
+            className={navMobile("/blog")}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Blog
+          </Link>
+          <Link
+            href="/contact"
+            className={navMobile("/contact")}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Contact
+          </Link>
 
-          {/* Mobile Gallery */}
+          {/* Mobile Gallery Dropdown */}
           <button
             onClick={() => setShowMobileDropdown(!showMobileDropdown)}
             className="flex items-center gap-1 text-lg"
@@ -148,17 +189,35 @@ export default function Header() {
           </button>
 
           {showMobileDropdown && (
-            <div className="border-l-2 border-[#5e4b14] pl-3 flex flex-col gap-2">
-              <Link href="/gallery/photo" className={dropdownMobile("/gallery/photo")}>
+            <div
+              className="border-l-2 border-[#5e4b14] pl-3 flex flex-col gap-2"
+              onClick={(e) => e.stopPropagation()} // prevent accidental closure
+            >
+              <Link
+                href="/gallery/photo"
+                className={dropdownMobile("/gallery/photo")}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Photo Gallery
               </Link>
-              <Link href="/gallery/video" className={dropdownMobile("/gallery/video")}>
+              <Link
+                href="/gallery/video"
+                className={dropdownMobile("/gallery/video")}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Video Gallery
               </Link>
             </div>
           )}
 
-          <Link href="/contact" className={navMobile("/contact")}>Contact</Link>
+          
+
+          <button
+            className="bg-[#eab308] text-black py-2 rounded font-bold"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Inquire Now
+          </button>
         </div>
       )}
     </header>

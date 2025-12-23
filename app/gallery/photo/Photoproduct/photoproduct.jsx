@@ -10,11 +10,11 @@ export default function Photoproduct() {
   const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 3;
   const {
-    data: products,
+    data,
     error,
     isLoading,
-  } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/gallery`, fetcher);
-
+  } = useSWR("https://productsbackend-0zfz.onrender.com/products", fetcher);
+  const products = Array.isArray(data) ? data : data?.products || [];
  
   const specialIds = [ 1,2, 3];
 
@@ -24,7 +24,7 @@ export default function Photoproduct() {
   const datas = ["all", "gutkha", "surti", "jarda", "pan-masala", "export"];
 
   function DataProduct(path) {
-    return `px-4 py-2 rounded-md text-sm font-medium transition-all
+    return `flex sm:flex-col lg:flex-row  sm px-4 py-2 rounded-md text-sm font-medium transition-all
       ${
         active === path
           ? "bg-yellow-500 text-black hover:bg-yellow-600"
@@ -44,8 +44,8 @@ export default function Photoproduct() {
   return (
     <div>
       {/* FILTER BUTTONS */}
-      <section className="py-8  flex justify-center w-full bg-black ">
-        <div className="flex gap-1 bg-gray-800 p-1 rounded-lg display-flex justify-between w-[1050px] ">
+      <section className=" py-8 px-4 lg:px-0 flex justify-center w-full bg-black ">
+        <div className="grid grid-cols-2 gap-3 bg-gray-800 p-3 rounded-lg  w-full  md:flex md:gap-1 md:p-1 md:justify-between md:w-[750px] lg:w-[1190px]">
           {datas.map((term) => (
             <button
               key={term}
@@ -60,7 +60,7 @@ export default function Photoproduct() {
 
       {/* PRODUCTS */}
       <section className="py-8 bg-black">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto px-6 lg:px-10">
           {selectedProducts.length > 0 ? (
             selectedProducts.map((item, index) => (
               <div

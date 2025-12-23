@@ -101,7 +101,7 @@ export default function Header() {
             </button>
 
             {showDropdown && (
-              <div className="absolute top-full mt-2 w-48 bg-[#211f1b] border border-[#eab308]/30 rounded-lg shadow-lg p-2 z-50">
+              <div className="absolute flex flex-col gap-1 top-full mt-2 w-48 bg-[#211f1b] border border-[#eab308]/30 rounded-lg shadow-lg p-2 z-50">
                 <Link
                   href="/gallery/photo"
                   className={dropdownClass("/gallery/photo")}

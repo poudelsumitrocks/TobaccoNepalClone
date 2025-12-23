@@ -17,8 +17,8 @@ export default function page() {
           </div>
         </div>
       </section>
-      <section className="py-8 px-4 md:px-6 lg:px-8 bg-black">
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pl-10 mb-10">
+      <section className="py-2 lg:py-8 px-4 md:px-6 lg:px-8 bg-black">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2 lg:px-0 lg:pl-10 mb-10">
     <div className="relative group overflow-hidden rounded-lg  cursor-pointer border border-gray-800 shadow-[0_2px_20px_rgba(110,110,110,0.5)] transition-all duration-300 ">
   
 

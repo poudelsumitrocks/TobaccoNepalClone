@@ -15,6 +15,10 @@ export default function page() {
               captivating visuals of our photography, practices, and production.
             </span>
           </p>
+       <p className="blog-mobile">
+  Experience the journey from farm to finished product through captivating
+  visuals of our photography, practices, and production.
+</p>
         </div>
       </section>
       <section className="blog-featured">

@@ -7,8 +7,6 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Photoproduct() {
   const [active, setActive] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 3;
   const {
     data,
     error,

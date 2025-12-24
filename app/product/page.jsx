@@ -109,7 +109,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="bg-black max-h-[1900px] pl-6 pr-6">
+      <section className="bg-black max-h-[1000px]lg:max-h-[1900px] pl-6 pr-6">
         <div className="search-container mb-8">
           <Search
             search={search}

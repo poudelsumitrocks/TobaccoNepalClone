@@ -3,42 +3,31 @@
 import { CiSearch } from "react-icons/ci";
 import { IoFilter } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Search({ search, setSearch, sort, setSort }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const searchQuery = searchParams.get("search") || "";
-  const sortParam = searchParams.get("sort") || "latest";
-
   const [dropdown, setDropdown] = useState(false);
 
-  // Initialize search and sort from URL on mount
-  useEffect(() => {
-    setSearch(searchQuery);
-    setSort(sortParam);
-  }, [searchQuery, sortParam, setSearch, setSort]);
-
+  // Trigger search button / Enter
   const handleSearch = () => {
     const query = new URLSearchParams({
-      // page: 1,
       search: search || "",
       // sort: sort,
+    
     }).toString();
 
     router.push(`/product?${query}`, { scroll: false });
   };
 
+  // Trigger sort change
   const handleSortChange = (newSort) => {
-    setSort(newSort);
+    setSort(newSort);       
     setDropdown(false);
 
     const query = new URLSearchParams({
-      // page: 1,
-      // search: search || "",
-      // sort: newSort,
+      sort: newSort,
     }).toString();
 
     router.push(`/product?${query}`, { scroll: false });
@@ -52,7 +41,7 @@ export default function Search({ search, setSearch, sort, setSort }) {
           type="text"
           placeholder="Search by product name..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}  // ✅ only search
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
         <div className="search-btn" onClick={handleSearch}>
@@ -69,7 +58,7 @@ export default function Search({ search, setSearch, sort, setSort }) {
           </h1>
 
           {dropdown && (
-            <div className="absolute top-full left-[-48] mt-2 w-36 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/30 p-2 z-10 shadow-lg">
+            <div className="absolute top-full left- lg:left-[-46] mt-2 w-72 lg:w-36 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/80 p-1 lg:p-2 z-10 shadow-lg">
               <ul className="flex flex-col gap-2">
                 <li
                   className="px-2 py-2 cursor-pointer rounded-lg hover:bg-[#eab308]"

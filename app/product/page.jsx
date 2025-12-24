@@ -6,6 +6,7 @@ import "./style.css";
 
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import useSWR from "swr";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { getProducts } from "./data";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -16,21 +17,18 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Page() {
   const [active, setActive] = useState("all");
-  const [sort, setSort] = useState("latest");
+  const [sort, setSort] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
-
   const router = useRouter();
-  // const searchParams = useSearchParams();
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const itemsPerPage = 10;
-
-  // Get all products from backend
-  // const { data: products, error, isLoading } = useSWR(
-  //   `${process.env.NEXT_PUBLIC_API_URL}/products`,
-  //   fetcher
-  // );
-  const {data: products,error,isLoading}=useSWR("https://productsbackend-0zfz.onrender.com/products",fetcher)
+  const {
+    data: products,
+    error,
+    isLoading,
+  } = useSWR("https://productsbackend-0zfz.onrender.com/products", fetcher);
   const categories = ["all", "gutkha", "surti", "jarda", "pan-masala"];
 
   const [displayProducts, setDisplayProducts] = useState([]);
@@ -39,7 +37,7 @@ export default function Page() {
   useEffect(() => {
     if (!products) return;
 
-    let filtered = products.products;
+    let filtered = products;
 
     // Category filter
     if (active !== "all") {
@@ -55,8 +53,7 @@ export default function Page() {
 
     // Sort
     const sorted = [...filtered].sort((a, b) => {
-      
-      return sort === "latest" ? b.id-a.id:a.id-b.id;
+      return sort === "latest" ? b.id - a.id : a.id - b.id;
     });
 
     setDisplayProducts(sorted);
@@ -67,7 +64,10 @@ export default function Page() {
   const totalPages = Math.ceil(displayProducts.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentProducts = displayProducts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentProducts = displayProducts.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const goToPage = (page) => {
     setCurrentPage(page);
@@ -119,46 +119,62 @@ export default function Page() {
           />
         </div>
 
-      {(active !== "all" || search) && (
-  <div className="mb-6">
-    <Popup
-      category={active}
-      setCategory={(cat) => {
-        setActive(cat);
-        setSearch("");
-       setSort("")
-        // Keep search term when changing category
-        router.push(
-          `/product?&search=${encodeURIComponent(search)}&category=${cat}&sort=${sort}`,
-          { scroll: false }
-        );
-      }}
-      setSearch={setSearch}
-      currentCategoryName={
-          search
-            ? `Search: "${search}" ${active !== "all" ? ` | ${getProducts(active)}` : ""}`
-            : getProducts(active)
-      } 
-      currentCategorysort={
-          search
-            ? `${sort} ${active !== "latest" ? ` | ${getProducts(active)}` : ""}`
-          :""
-      }  
-    />
-  </div>
-)}
+        {(active !== "all" || search || sort !== "all") && (
+          <div className="mb-6">
+            <Popup
+              /* CATEGORY */
+              category={active}
+              setCategory={(cat) => {
+                setActive(cat);
+                router.push(
+                  `/product?search=${encodeURIComponent(
+                    search
+                  )}&category=${cat}&sort=${sort}`,
+                  { scroll: false }
+                );
+              }}
+              currentCategoryName={getProducts(active)}
+              /* SEARCH */
+              search={search}
+              setSearch={(value) => {
+                setSearch(value);
+                router.push(
+                  `/product?search=${encodeURIComponent(
+                    value
+                  )}&category=${active}&sort=${sort}`,
+                  { scroll: false }
+                );
+              }}
+              /* SORT */
+              sort={sort}
+              setSort={(value) => {
+                setSort(value);
+                router.push(
+                  `/product?search=${encodeURIComponent(
+                    search
+                  )}&category=${active}&sort=${value}`,
+                  { scroll: false }
+                );
+              }}
+            />
+          </div>
+        )}
 
         <div className="text-center mb-8">
           <h1 className="text-[#D2863C] text-lg font-medium">
             Showing{" "}
-            <span className="text-[#EAB308] font-bold">{currentProducts.length}</span>{" "}
+            <span className="text-[#EAB308] font-bold">
+              {currentProducts.length}
+            </span>{" "}
             of{" "}
-            <span className="text-[#EAB308] font-bold">{displayProducts.length}</span>{" "}
+            <span className="text-[#EAB308] font-bold">
+              {displayProducts.length}
+            </span>{" "}
             products
           </h1>
         </div>
 
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 px-2 gap-6 mb-8">
+        <div className="hidden md:grid lg:grid-cols-5 md:grid-cols-3 px-2 gap-6 mb-8">
           {categories.map((item) => (
             <button
               key={item}
@@ -170,7 +186,39 @@ export default function Page() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8 px-2 ">
+        {/* MOBILE CATEGORY */}
+        <div className="md:hidden mb-6 px-2 relative">
+          <button
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="w-full bg-[#2D2D2D] text-white  px-4 py-3 rounded-xl font-semibold flex justify-between items-center shadow-lg"
+          >
+            {getProducts(active)}
+            <span className="text-xl transition-transform duration-300">
+              {showDropdown ? <IoIosArrowUp /> : <IoIosArrowDown />}
+            </span>
+          </button>
+
+          {showDropdown && (
+            <div className="absolute z-50 w-full mt-2 bg-[#2D2D2D] text-[#EAB308]  rounded-xl shadow-xl overflow-hidden">
+              {categories.map((item) => (
+                <button
+                  key={item}
+                  onClick={() => {
+                    setActive(item);
+                    setShowDropdown(false);
+                  }}
+                  className={`w-full text-left px-4 py-3 text-sm font-medium hover:bg-[#FFF7E6] ${
+                    active === item ? "bg-[#EAB308]/40" : "text-white "
+                  }`}
+                >
+                  {getProducts(item)}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8 px-2  overflow-clip">
           {currentProducts.map((item) => (
             <Link
               key={item.id}
@@ -230,7 +278,7 @@ export default function Page() {
           </div>
         )}
         <div className="bg-black mt-10">
-          <pre>                          </pre>
+          <pre> </pre>
         </div>
       </section>
     </div>

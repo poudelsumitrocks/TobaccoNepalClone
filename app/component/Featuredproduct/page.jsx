@@ -5,11 +5,11 @@ import { HiArrowLongRight } from "react-icons/hi2";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function Featuredproduct() {
   const {
-    data: products,
+    data,
     error,
     isLoading,
-  } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/products`, fetcher);
-
+  } = useSWR("https://productsbackend-0zfz.onrender.com/products", fetcher);
+  const products=Array.isArray(data)?data:data?.products||[];
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error fetching data</p>;
 

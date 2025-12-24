@@ -37,7 +37,7 @@ export default async function page({ params }) {
           <div className="blogid-content">
             <div className="blogid-authorinfo">
               <IoPerson />
-              <span> Admin </span>
+              <span > Admin </span>
             </div>
 
             <div className="blogid-heading">

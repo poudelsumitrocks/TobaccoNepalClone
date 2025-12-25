@@ -1,28 +1,10 @@
 
-// export default function Page() {
-//   return (
-//     <div className="min-h-screen bg-black text-white">
-//       <section className="relative mx-auto h-[500px] w-full bg-stone-950 shadow-md overflow-hidden">
-//         {/* Background Image */}
-//         <div
-//           className="absolute inset-0 bg-cover bg-center filter blur-md"
-//           style={{ backgroundImage: "url('/backgroundimg.jpg')" }}
-//         ></div>
-
-//         {/* Content on top of the image */}
-//         <div className="relative z-10 flex items-center justify-center h-full">
-//           <h1 className="text-4xl font-bold">Hello World</h1>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
 
 import Link from "next/link";
 import "./herosection.css"
-import { useState } from "react";
+
 export default function Page() {
-  const [mobile,setMobile]=useState();
+
   return (
     <div className=" page-container">
       <section className="hero-section">

@@ -8,13 +8,13 @@ export default async function Page({ params }) {
   const { productid } = await params;
   // fetch product details
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/products/${productid}`,
+    `https://productsbackend-0zfz.onrender.com/products/${productid}`,
     { cache: "no-store" }
   );
   const product = await res.json();
   // fro similar products
   const similarProduct = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/products?category=${product.category}&_limit=4`
+    `https://productsbackend-0zfz.onrender.com/products?category=${product.category}&_limit=4`
   );
 const allSimilar = await similarProduct.json();
 

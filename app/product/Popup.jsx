@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { LuTag } from "react-icons/lu";
+
 import { IoClose } from "react-icons/io5";
 import { useRouter } from "next/navigation";
-
+import { PiSortAscendingLight } from "react-icons/pi";
 export default function Popup({
   category,
   setCategory,
@@ -75,7 +75,8 @@ export default function Popup({
 function PopupChip({ label, onClose }) {
   return (
     <div className="bg-[#D2863C]/20 text-[#d2863c] text-sm font-medium py-2 px-4 rounded-2xl flex gap-2 items-center w-fit">
-      <LuTag />
+     
+      <PiSortAscendingLight size={20} className="text-bold"/>
       <p>{label}</p>
       <button onClick={onClose}>
         <IoClose className="text-lg cursor-pointer hover:text-[#e4a260]" />

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FiMessageCircle } from "react-icons/fi";
 import { FiExternalLink } from "react-icons/fi";
 import { HiArrowLongRight } from "react-icons/hi2";
-// import { getProducts } from "../data";
+
 export default async function Page({ params }) {
   const { productid } = await params;
   // fetch product details

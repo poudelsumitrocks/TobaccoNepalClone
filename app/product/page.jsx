@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import "./product.css";
 import "./style.css";
 
@@ -9,7 +9,7 @@ import useSWR from "swr";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { getProducts } from "./data";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter} from "next/navigation";
 import Search from "./search";
 import Popup from "./Popup";
 
@@ -22,7 +22,7 @@ export default function Page() {
   const [search, setSearch] = useState("");
   const router = useRouter();
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const topRef=useRef(null);
   const itemsPerPage = 10;
   const {
     data: products,
@@ -53,7 +53,7 @@ export default function Page() {
 
     // Sort
     const sorted = [...filtered].sort((a, b) => {
-      return sort === "latest" ? b.id - a.id : a.id - b.id;
+      return sort === "latest" ?   a.id - b.id:b.id - a.id;
     });
 
     setDisplayProducts(sorted);
@@ -71,7 +71,11 @@ export default function Page() {
 
   const goToPage = (page) => {
     setCurrentPage(page);
-    router.push(`/product?page=${page}`, { scroll: false });
+    router.push(`/product?page=${page}`,{scroll:"smooth"});
+    topRef.current?.scrollIntoView({
+      behavior:"smooth",
+      block:"start",
+    })
   };
 
   function dataProduct(path) {
@@ -160,7 +164,7 @@ export default function Page() {
           </div>
         )}
 
-        <div className="text-center mb-8">
+        <div ref={topRef} className="text-center mb-8">
           <h1 className="text-[#D2863C] text-lg font-medium">
             Showing{" "}
             <span className="text-[#EAB308] font-bold">

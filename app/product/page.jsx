@@ -78,7 +78,7 @@ export default function Page() {
 
   const goToPage = (page) => {
     setCurrentPage(page);
-    router.push(`/product?page=${page}`,{scroll:smooth});
+    router.push(`/product?page=${page}`);
     topRef.current?.scrollIntoView({
       behavior:"smooth",
       block:"start",

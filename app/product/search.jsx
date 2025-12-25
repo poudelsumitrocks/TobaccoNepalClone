@@ -52,10 +52,15 @@ export default function Search({ search, setSearch, sort, setSort }) {
       <div className="filter-btn">
         <IoFilter className="filter-icon" size={20} />
         <div className="learn">
-          <h1 className="learn-header" onClick={() => setDropdown(!dropdown)}>
-            {sort === "latest" ? "Latest" : "Oldest"}
+          {/* <h1 className="learn-header" onClick={() => setDropdown(!dropdown)}>
+            {sort === "latest" ? "Oldest" : "Latest"}
             <IoIosArrowDown className="learn-icon" size={16} />
-          </h1>
+          </h1> */}
+          <h1 className="learn-header"onClick={() => setDropdown(!dropdown)}>
+  {sort === "latest" ? "Latest" : "Oldest"}
+  <IoIosArrowDown className="learn-icon" size={16} />
+</h1>
+
 
           {dropdown && (
             <div className="absolute top-full left- lg:left-[-46] mt-2 w-72 lg:w-36 bg-[#211f1b] text-white rounded-lg border border-[#eab308]/80 p-1 lg:p-2 z-10 shadow-lg">

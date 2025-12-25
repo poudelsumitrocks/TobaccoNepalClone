@@ -52,9 +52,16 @@ export default function Page() {
     }
 
     // Sort
-    const sorted = [...filtered].sort((a, b) => {
-      return sort === "latest" ?   a.id - b.id:b.id - a.id;
-    });
+   const sorted = [...filtered].sort((a, b) => {
+  if (sort === "latest") {
+    return a.id - b.id; // newest first
+  }
+  if (sort === "oldest") {
+    return b.id -a.id; // oldest first
+  }
+  return 0;
+});
+
 
     setDisplayProducts(sorted);
     setCurrentPage(1);
@@ -71,7 +78,7 @@ export default function Page() {
 
   const goToPage = (page) => {
     setCurrentPage(page);
-    router.push(`/product?page=${page}`,{scroll:"smooth"});
+    router.push(`/product?page=${page}`,{scroll:smooth});
     topRef.current?.scrollIntoView({
       behavior:"smooth",
       block:"start",

@@ -76,7 +76,7 @@ export default function Page() {
     indexOfFirstItem,
     indexOfLastItem
   );
-  const searchParams = useSearchParams();
+const searchParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : new URLSearchParams();
 
   const goToPage = (page) => {
   if (page === currentPage) return; 

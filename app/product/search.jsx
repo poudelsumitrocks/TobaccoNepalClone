@@ -41,7 +41,7 @@ export default function Search({ search, setSearch, sort, setSort }) {
           type="text"
           placeholder="Search by product name..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}  // ✅ only search
+          onChange={(e) => setSearch(e.target.value)}  
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
         <div className="search-btn" onClick={handleSearch}>

@@ -9,7 +9,8 @@ import useSWR from "swr";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { getProducts } from "./data";
 import Link from "next/link";
-import { useRouter} from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+
 import Search from "./search";
 import Popup from "./Popup";
 
@@ -54,10 +55,10 @@ export default function Page() {
     // Sort
    const sorted = [...filtered].sort((a, b) => {
   if (sort === "latest") {
-    return a.id - b.id; // newest first
+    return a.id - b.id;
   }
   if (sort === "oldest") {
-    return b.id -a.id; // oldest first
+    return b.id -a.id; 
   }
   return 0;
 });
@@ -75,15 +76,26 @@ export default function Page() {
     indexOfFirstItem,
     indexOfLastItem
   );
+  const searchParams = useSearchParams();
 
   const goToPage = (page) => {
-    setCurrentPage(page);
-    router.push(`/product?page=${page}`);
+  if (page === currentPage) return; 
+
+  setCurrentPage(page);
+
+  const params = new URLSearchParams(searchParams.toString());
+  params.set("page", page);
+
+  router.push(`/product?${params.toString()}`, { scroll: false });
+
+  requestAnimationFrame(() => {
     topRef.current?.scrollIntoView({
-      behavior:"smooth",
-      block:"start",
-    })
-  };
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+};
+
 
   function dataProduct(path) {
     return `flex items-center justify-center h-20 w-56 px-2 py-2 rounded-lg text-sm lg:text-lg font-semibold transition-all duration-300 cursor-pointer ${
@@ -121,7 +133,7 @@ export default function Page() {
       </section>
 
       <section className="bg-black max-h-[1000px]lg:max-h-[1900px] pl-6 pr-6">
-        <div className="search-container mb-8">
+        <div ref={topRef}  className="search-container mb-8">
           <Search
             search={search}
             setSearch={setSearch}
@@ -171,7 +183,7 @@ export default function Page() {
           </div>
         )}
 
-        <div ref={topRef} className="text-center mb-8">
+        <div className="text-center mb-8">
           <h1 className="text-[#D2863C] text-lg font-medium">
             Showing{" "}
             <span className="text-[#EAB308] font-bold">
